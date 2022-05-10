@@ -11,12 +11,12 @@ import {
 
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { navData } from "../../components/Navbar/nav-data";
+// import { navData } from "../../components/Navbar/nav-data";
 
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
+// import usePlacesAutocomplete, {
+//   getGeocode,
+//   getLatLng,
+// } from "use-places-autocomplete";
 
 import GymForm from "./GymForm";
 

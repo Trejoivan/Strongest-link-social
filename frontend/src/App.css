@@ -527,7 +527,6 @@ h5 {
 
 }
 
-
 /* .///////////////Card Css */
 .card {
   padding: 1rem;
@@ -585,7 +584,8 @@ h5 {
   background-color: #1f2632;
   color: #7cf7c6;
 }
-.search-button{
+
+.search-button {
   margin-top: 0rem;
   font-size: 1.5rem;
   width: 100%;
@@ -594,7 +594,7 @@ h5 {
   transition: ease-in-out .2s;
 }
 
-.search-button:hover{
+.search-button:hover {
   border-radius: 3rem;
   margin-top: 0rem;
   font-size: 1.5rem;
@@ -622,6 +622,7 @@ h5 {
   align-items: center;
   flex-direction: row;
 }
+
 .page-btn {
   background-color: #7cf7c6;
   color: #1f2632;
@@ -637,7 +638,7 @@ h5 {
   color: #7cf7c6;
 }
 
-.page-btn-container{
+.page-btn-container {
   display: flex;
   gap: 0.5rem;
   transition: ease-in-out .2s;
@@ -663,15 +664,18 @@ h5 {
   padding-right: 0.3rem;
   color: #7cf7c6;
 }
+
 polygon {
   fill: #cee3e9 !important;
 }
 
 polygon:hover {
-  fill: #7cf7c6!important;
+  fill: #7cf7c6 !important;
 }
+
 /* lists css */
-ol, ul {
+ol,
+ul {
   padding-left: 0;
 }
 

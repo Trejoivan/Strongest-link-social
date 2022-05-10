@@ -1,9 +1,9 @@
 import StrongestLinkApi from '../api/StrongestLinkApi';
 import workoutApi from '../api/workoutAPI';
 import { useState, useEffect } from 'react';
-import MyCard from '../components/Card'
+import MyCard from '../components/Card';
 import { useNavigate } from 'react-router-dom';
-import BodyPng from '../components/BodyPng'
+import BodyPng from '../components/BodyPng';
 
 function WorkoutPage() {
   const bodyoptions = ["back", "cardio", "chest", "lower arms", "lower legs", "neck", "shoulders", "upper arms", "upper legs", "waist"];
@@ -11,7 +11,7 @@ function WorkoutPage() {
   const equipmentoptions = ["assisted", "band", "barbell", "body weight", "bosu ball", "cable", "dumbbell", "elliptical machine", "ez barbell", "hammer", "kettlebell", "leverage machine", "medicine ball", "olympic barbell", "resistance band", "roller", "rope", "skierg machine", "sled machine", "smith machine", "stability ball", "stationary bike", "stepmill machine", "tire", "trap bar", "upper body ergometer", "weighted", "wheel roller"];
 
   const targetoptions = ["abductors", "abs", "biceps", "calves", "cardiovascular system", "delts", "forearms", "glutes", "hamstrings", "lats", "levator scapulae", "pectorals", "quads", "serratus anterior", "spine", "traps", "triceps", "upper back"];
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   const [topdropvalue, setTopdropvalue] = useState('bodyPart');
   const [responseData, setResponseData] = useState([]);
@@ -69,34 +69,34 @@ function WorkoutPage() {
 
 
   const renderCards = (data) => {
-    if (responseData.length > 18 ) {
+    if (responseData.length > 18) {
       const results = [];
       responseData.forEach(data => { results.push(data); });
-      let currentPage = (page === 1 ? 0 : page * 18)
-      let endOfPage = (page === 1 ? (page * 18): (page * 18)  + 18)
-      let starting = 0
+      let currentPage = (page === 1 ? 0 : page * 18);
+      let endOfPage = (page === 1 ? (page * 18) : (page * 18) + 18);
+      let starting = 0;
       return results.slice(currentPage, endOfPage).map(data => {
-          return <MyCard data={data} key={data.id} />;
+        return <MyCard data={data} key={data.id} />;
       });
     }
     else {
-    return data.map(workout => <MyCard data={workout} handleClickHandler = {handleClickHandler}/>)
-  }
-}
+      return data.map(workout => <MyCard data={workout} handleClickHandler={handleClickHandler} />);
+    }
+  };
 
-  const handleClickHandler = async (imageUrl , exerciseName) =>{
+  const handleClickHandler = async (imageUrl, exerciseName) => {
     const postData = {
-      "caption" : `Check out this workout: ${exerciseName}`,
-      "image" : imageUrl,
-      "comments" : []
+      "caption": `Check out this workout: ${exerciseName}`,
+      "image": imageUrl,
+      "comments": []
+    };
+    const backendResponse = await StrongestLinkApi.postPost(postData);
+    if (backendResponse) {
+      nav(`/posts/${backendResponse.id}`);
     }
-    const backendResponse = await StrongestLinkApi.postPost(postData)
-    if(backendResponse){
-      nav(`/posts/${backendResponse.id}`)
-    }
-    console.log(backendResponse)
-    
-  }
+    console.log(backendResponse);
+
+  };
 
   const renderButtons = (data) => {
     if (responseData.length > 18) {
@@ -108,7 +108,7 @@ function WorkoutPage() {
       return pageButtons;
     }
     else {
-      return <button key={1} onClick={() => { setPage(1); }} className="page-btn-active">{1}</button>
+      return <button key={1} onClick={() => { setPage(1); }} className="page-btn-active">{1}</button>;
     }
   };
 
@@ -116,7 +116,6 @@ function WorkoutPage() {
     <section className="gym-page">
       <div className="search-section">
         <h2>Need a quick workout?</h2>
-        
         <form className="drop-downs" onSubmit={handleSearch}>
           <select onChange={(event) => setTopdropvalue(event.target.value)} name="topSearch" >
             <option value="bodyPart"> Body Part</option>
@@ -129,11 +128,10 @@ function WorkoutPage() {
           <button className="search-button" type="submit"> Search </button>
         </form>
       </div>
-      <BodyPng setResponseData={setResponseData} setPage={setPage} fetchData={fetchData} renderButtons={renderButtons}  />
+      <BodyPng setResponseData={setResponseData} setPage={setPage} fetchData={fetchData} renderButtons={renderButtons} />
       <div className="page-btn-container">{responseData.length > 0 ? renderButtons(responseData) : ''}</div>
       <div className="results"> {responseData.length > 0 ? renderCards(responseData) : ''}</div>
     </section>
-
   );
 }
 
