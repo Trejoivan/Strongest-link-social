@@ -75,7 +75,7 @@ function LocationPage(props) {
         {renderProfiles()}
       </ol>
       {attend ? (
-        <div>
+        <div className='attend-or-not'>
           <h5>You attend this location</h5>
         </div>
       ) : (

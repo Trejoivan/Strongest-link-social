@@ -40,6 +40,22 @@ textarea {
 
 .gym-page {
   top: 5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gym-page h2, h5 {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.gym-page .attend-or-not {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -403,7 +419,7 @@ a:hover {
   align-items: center;
 }
 
-h1 {
+h1, h2 {
   text-transform: uppercase;
 }
 
@@ -700,13 +716,13 @@ ul {
   text-align: center;
 }
 
-.Chart{
+/* .Chart{
   height: 50%;
 }
-
+ */
 .myChart{
   display: inline-block;
-  height: 75rem;
+  /* height: 75rem; */
   color: #ffffff;
 }
 
@@ -772,3 +788,39 @@ ul {
   }
 }
 
+.leaderboard-pg {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaderboard-pg h1 {
+  text-align: center;
+}
+
+.leaderboard-pg li {
+  border-bottom: 1px solid white;
+}
+
+.exer-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Chart {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* galaxy fold (v skinny screen) breakpoint */
+@media(max-width: 300px) {
+  .myChart {
+    width: 100%;
+    height: auto;
+  }
+}
