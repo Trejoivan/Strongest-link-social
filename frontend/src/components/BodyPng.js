@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 export default function BodyPng(props) {
 
-  const pngDict = {'neck': 'neck','front-deltoids': 'delts', "biceps": 'biceps', 'triceps': 'triceps', 'forearm': 'forearms', 'adductor': 'abductors', "abs": 'abs', 'obliques': 'abs', "quadriceps": 'quads', 'hamstring': 'hamstrings', 'calves': 'calves', 'knees': 'quads', 'upper-back': 'upper back', 'lower-back': 'lats', 'gluteal': 'glutes', 'left-soleus': 'calves', 'trapezius': 'traps', 'front-deltoids': 'delts', 'chest': 'chest', 'obliques': 'abs'
+  const pngDict = {'neck': 'neck','front-deltoids': 'delts', "biceps": 'biceps', 'triceps': 'triceps', 'forearm': 'forearms', 'adductor': 'abductors', "abs": 'abs', 'obliques': 'abs', "quadriceps": 'quads', 'hamstring': 'hamstrings', 'calves': 'calves', 'knees': 'quads', 'upper-back': 'upper back', 'lower-back': 'lats', 'gluteal': 'glutes', 'left-soleus': 'calves', 'trapezius': 'traps', 'front-deltoids': 'delts', 'chest': 'chest', 'obliques': 'abs', "back-deltoids" : 'delts'
   };
 
 
@@ -17,7 +17,13 @@ export default function BodyPng(props) {
 
   const firstPngEvent = async (event) => {
     if(event['muscle'] == 'head') {
-      props.setResponseData()
+      props.setResponseData([{
+        bodyPart: "A",
+        equipment: "Book!!",
+        gifUrl: "https://thumbs.dreamstime.com/b/weared-sweater-cap-smart-hipster-coffee-cup-chair-sitting-leather-armchair-dark-background-clever-manly-203041622.jpg",
+        id: "140312",
+        name: "Read",
+        target: ""}])
     }
     else {
       props.setPage(1)
@@ -35,10 +41,17 @@ export default function BodyPng(props) {
 
   const secondPngEvent = (event) => {
     if(event['muscle'] == 'head') {
-      console.log('headdumbass')
+      props.setResponseData([{
+        bodyPart: "A",
+        equipment: "Book!!",
+        gifUrl: "https://thumbs.dreamstime.com/b/weared-sweater-cap-smart-hipster-coffee-cup-chair-sitting-leather-armchair-dark-background-clever-manly-203041622.jpg",
+        id: "140312",
+        name: "Read",
+        target: ""}])
     }
     else {
-      props.setPage(1)
+    props.setPage(1)
+    console.log(event['muscle'])
     const deepSearch = pngDict[event['muscle']]
     let topSearch = ''
     if(bodyPartOptions.includes(deepSearch)){

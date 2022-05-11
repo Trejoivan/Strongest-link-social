@@ -49,6 +49,7 @@ function WorkoutPage() {
   const fetchData = (topSearch, search) => {
     workoutApi.getData(topSearch, search)
       .then((response) => {
+        console.log(response.data);
         setResponseData(response.data);
       })
       .catch((error) => {
@@ -76,7 +77,7 @@ function WorkoutPage() {
       let endOfPage = (page === 1 ? (page * 18) : (page * 18) + 18);
       let starting = 0;
       return results.slice(currentPage, endOfPage).map(data => {
-        return <MyCard data={data} key={data.id} />;
+        return <MyCard handleClickHandler={handleClickHandler} data={data} key={data.id} />;
       });
     }
     else {
