@@ -197,23 +197,22 @@ function Leaderboard() {
   const renderLifts = () => {
     if (handleClick) {
       return (
-        <ul>
+        <ol>
           {topFive.map((exercise, index) => {
             return (
               <div key={`exercise-${exercise.id}`}>
                 <li>
+                <div className="leaderboard-list-item">
                   <h3>
-                    {index + 1 + ". "} {exercise.user.username}
+                    {exercise.user.username}
                   </h3>
-                </li>
-                <li>
-                  {exercise.weight} lbs
-                  <hr />
+                  <h2>{exercise.weight} lbs</h2>
+                </div>
                 </li>
               </div>
             );
           })}
-        </ul>
+        </ol>
       );
     }
   };
@@ -221,24 +220,22 @@ function Leaderboard() {
   const renderCardio = () => {
     if (cardioClick) {
       return (
-        <ul>
+        <ol>
           {cardioData.map((exercise, index) => {
             return (
               <div key={`cardio-${exercise.id}`}>
                 <li>
-                  <h3>
-                    {" "}
-                    {index + 1 + ". "} {exercise.user.username}{" "}
-                  </h3>
-                </li>
-                <li>
-                  {exercise.miles} miles
-                  <hr />
+                  <div className="leaderboard-list-item">
+                    <h3>
+                    {exercise.user.username}{" "}
+                    </h3>
+                    <h2>{exercise.miles} miles</h2>
+                  </div>
                 </li>
               </div>
             );
           })}
-        </ul>
+        </ol>
       );
     }
   };
@@ -270,7 +267,7 @@ function Leaderboard() {
   };
 
   return (
-    <section>
+    <section className="leaderboard-pg">
       <h1> Strongest Link Top 5</h1>
       <div className="exer-buttons">
         <button className="btn primary" onClick={handleClick} id="Bench">
