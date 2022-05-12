@@ -5,11 +5,6 @@ const StrongestLinkApi = {};
 
 const TOKEN_BASE = "http://localhost:8000/dj-rest-auth";
 const BASE_URL = "http://localhost:8000/api";
-const HEADERS = {
-  headers: {
-    Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-  },
-};
 
 // auth calls
 StrongestLinkApi.register = async (registerData) => {
@@ -81,7 +76,7 @@ StrongestLinkApi.deletePostByID = async (postID) => {
   );
 };
 
-StrongestLinkApi.editPostByID = async (postID , postData) => {
+StrongestLinkApi.editPostByID = async (postID, postData) => {
   return await apiHelpers.tryCatchFetch(() =>
     axios.patch(`${BASE_URL}/posts/${postID}/`, postData, {
       headers: {
@@ -144,12 +139,14 @@ StrongestLinkApi.getUserByID = async (userID) => {
 };
 
 StrongestLinkApi.getAllUserProfiles = async () => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/profiles/`, { headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-    }}))
-}
-
+  return await apiHelpers.tryCatchFetch(() =>
+    axios.get(`${BASE_URL}/profiles/`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+      },
+    })
+  );
+};
 
 StrongestLinkApi.deletePin = async (locationId) => {
   return await apiHelpers.tryCatchFetch(() =>
@@ -181,8 +178,6 @@ StrongestLinkApi.getLocations = async () => {
     })
   );
 };
-
-
 
 StrongestLinkApi.addAttendee = async (locationID, newAttendee) => {
   return await apiHelpers.tryCatchFetch(() =>
@@ -236,11 +231,14 @@ StrongestLinkApi.editProfile = async (userProfileID, userProfileData) => {
 };
 
 StrongestLinkApi.getAllUserProfiles = async () => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/profiles/`, { headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-    }}))
-}
+  return await apiHelpers.tryCatchFetch(() =>
+    axios.get(`${BASE_URL}/profiles/`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+      },
+    })
+  );
+};
 
 //methods for Friend Requests
 StrongestLinkApi.createFriendRequest = async (friendRequestData) => {

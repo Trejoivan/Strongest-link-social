@@ -1,5 +1,10 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, response
+from rest_framework.decorators import api_view
+import environ
 from .serializers import *
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,11 +28,11 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
     queryset = FriendRequest.objects.all()
     serializer_class = FriendRequestSerializer
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
         return super().perform_create(serializer)
-    
-    def perform_update(self,serializer):
+
+    def perform_update(self, serializer):
         updated_friend_request = serializer.instance
         super().perform_update(serializer)
         if serializer.instance.accepted == True:
@@ -43,11 +48,12 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
             return self.destroy(self)
         return serializer.save()
 
+
 class PostsViewSet(viewsets.ModelViewSet):
     queryset = Posts.objects.all().order_by("-id")
     serializer_class = PostsSerializer
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(user=self.request.user)
         return super().perform_create(serializer)
 
@@ -56,28 +62,29 @@ class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all().order_by("-id")
     serializer_class = CommentsSerializer
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(user=self.request.user)
         return super().perform_create(serializer)
+
 
 class LocationViewSet(viewsets.ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
-    
+
 
 class WeightliftingViewSet(viewsets.ModelViewSet):
     queryset = Weightlifting.objects.all()
     serializer_class = WeightliftingSerializer
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(user=self.request.user)
         return super().perform_create(serializer)
+
 
 class CardioViewSet(viewsets.ModelViewSet):
     queryset = Cardio.objects.all()
     serializer_class = CardioSerializer
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(user=self.request.user)
         return super().perform_create(serializer)
-
