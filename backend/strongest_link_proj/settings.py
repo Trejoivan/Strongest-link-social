@@ -34,9 +34,12 @@ ALLOWED_HOSTS = []
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://192.168.1.98:3000",
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    "http://192.168.1.98:3000",
 ]
 
 REST_USE_JWT = True
