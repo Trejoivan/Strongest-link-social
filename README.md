@@ -1,5 +1,7 @@
 # Strongest Link
 
+[DEPLOYED LINK](https://www.google.com](https://strongestlink.herokuapp.com/#/login)
+
 A fitness-focused social networking app that will allow users to document and share their fitness journies with friends, track workouts, and share invitations to various types of fitness activities.  Leaderboard support among friend groups and badges will be able to be earned to provide some gamification motivation. (rough draft, feel free to edit)
 
 ## Git Workflow Steps:
