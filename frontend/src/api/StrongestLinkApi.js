@@ -3,8 +3,8 @@ import axios from "axios";
 
 const StrongestLinkApi = {};
 
-const TOKEN_BASE = "http://localhost:8000/dj-rest-auth";
-const BASE_URL = "http://localhost:8000/api";
+const TOKEN_BASE = "https://strongestlinkdb.herokuapp.com/dj-rest-auth";
+const BASE_URL = "https://strongestlinkdb.herokuapp.com/api";
 
 // auth calls
 StrongestLinkApi.register = async (registerData) => {

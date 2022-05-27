@@ -15,7 +15,7 @@ function Footer() {
       <FontAwesomeIcon className="chain-icon" icon={faChain} />
       <a className="footer-link" href="https://www.linkedin.com/in/auraobscura/">Andrew Simpson</a>
       <FontAwesomeIcon className="chain-icon" icon={faChain} />
-      <a className="footer-link" href="www.linkedin.com/in/ivan-trejo-dev"> Ivan Trejo</a>
+      <a className="footer-link" href="https://www.linkedin.com/in/ivan-trejo-dev/"> Ivan Trejo</a>
       <FontAwesomeIcon className="chain-icon" icon={faChain} />
       <a className="footer-link" href="https://www.linkedin.com/in/katarzyna-kw/">Katarzyna Wegrzynowicz</a>
       </footer>

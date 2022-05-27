@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import environ
+# import environ
 from datetime import timedelta
 from pathlib import Path
 
@@ -17,13 +17,14 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # this will allow us to manage any secret keys in environment variables a little easier if we need to down the line
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = "mXxXo*AzF4uDo696Z2QUb!P.sN.Yr!Kg.W*ux*wa"
+print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,11 +36,13 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://192.168.1.98:3000",
+    "https://strongestlink.herokuapp.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://192.168.1.98:3000",
+    "https://strongestlink.herokuapp.com"
 ]
 
 REST_USE_JWT = True
@@ -90,7 +93,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
 ROOT_URLCONF = "strongest_link_proj.urls"
@@ -169,7 +172,11 @@ MEDIA_ROOT = BASE_DIR / "usermedia"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CORS_ORIGIN_WHITELIST = [
+    'https://strongestlink.herokuapp.com/', 'http://strongestlink.herokuapp.com/', 'https://strongestlink.herokuapp.com','http://strongestlink.herokuapp.com'
+]
 
 import dj_database_url 
+
 prod_db=dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
