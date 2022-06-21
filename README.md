@@ -22,7 +22,7 @@ A fitness-focused social networking app that will allow users to document and sh
 $ https://github.com/quebecplatoon/gp_gym_social_app.git
 $ cd gp_gym_social_app
 ```
- 
+  
 ___
 
 2. Create virtual environment to install backend dependencies:
